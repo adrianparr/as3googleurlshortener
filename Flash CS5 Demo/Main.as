@@ -15,7 +15,8 @@ package
 	public class Main extends Sprite 
 	{
 		// Get your API key from http://code.google.com/apis/console/
-		private const _apiKey:String = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+		//private const _apiKey:String = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+		private const _apiKey:String = "AIzaSyDx5TjJXZ_w3Q1LJ61RfgOV236Iod2aZZ4";
 		
 		private var _styleSheet:StyleSheet;
 		
@@ -35,7 +36,7 @@ package
 			// NOTE: The second API key (String) parameter is optional.
 			urlShortener1.expand(shortUrl, _apiKey);
 			
-			var longUrl:String = "http://code.google.com/p/as3googleurlshortener/";
+			var longUrl:String = "https://github.com/adrianparr/as3googleurlshortener";
 			var urlShortener2:GoogleUrlShortener = new GoogleUrlShortener();
 			urlShortener2.addEventListener(Event.COMPLETE, onShortenComplete);
 			urlShortener2.addEventListener(IOErrorEvent.IO_ERROR, onShortenIOError);

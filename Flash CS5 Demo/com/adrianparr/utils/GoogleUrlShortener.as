@@ -26,8 +26,10 @@ package com.adrianparr.utils
 	import flash.events.IOErrorEvent;
 	import flash.errors.IOError;
 	import flash.events.SecurityErrorEvent;
+	import flash.events.HTTPStatusEvent;
 	import flash.net.URLRequestMethod;
 	import flash.net.URLRequestHeader;
+	import flash.system.Capabilities;
 	
 	import com.adobe.serialization.json.JSON;
 	
@@ -59,8 +61,8 @@ package com.adrianparr.utils
 			_errorText = undefined;
 			_jsonData = undefined;
 			var urlRequest:URLRequest = new URLRequest();
-			urlRequest.url = _serversideProxyUrl;
 			var vars:URLVariables = new URLVariables();
+			urlRequest.url = _serversideProxyUrl;
 			vars.googleUrl = _googleUrl;
 			vars.shortUrl = shortUrl;
 			if (_apiKey != "") {
@@ -104,8 +106,8 @@ package com.adrianparr.utils
 			_errorText = undefined;
 			_jsonData = undefined;
 			var urlRequest:URLRequest = new URLRequest();
-			urlRequest.url = _serversideProxyUrl;
 			var vars:URLVariables = new URLVariables();
+			urlRequest.url = _serversideProxyUrl;
 			vars.googleUrl = _googleUrl;
 			if (_apiKey != "") {
 				vars.key = _apiKey;
@@ -116,6 +118,7 @@ package com.adrianparr.utils
 			urlLoader.dataFormat = URLLoaderDataFormat.TEXT;
 			urlLoader.addEventListener(Event.COMPLETE, onShorten_COMPLETE);
 			urlLoader.addEventListener(IOErrorEvent.IO_ERROR, onShorten_IO_ERROR);
+			urlLoader.addEventListener(HTTPStatusEvent.HTTP_STATUS, onShorten_HTTP_STATUS);
 			urlLoader.addEventListener(SecurityErrorEvent.SECURITY_ERROR, onShorten_SECURITY_ERROR);
 			urlLoader.load(urlRequest);
 		}
@@ -123,8 +126,7 @@ package com.adrianparr.utils
 		private function onShorten_COMPLETE(event:Event):void 
 		{
 			var loader:URLLoader = URLLoader(event.target);
-			var shortUrl:String = String(loader.data);
-			_shortUrl = shortUrl;
+			_shortUrl = String(loader.data);
 			dispatchEvent(event.clone());
 		}
 		
@@ -132,6 +134,14 @@ package com.adrianparr.utils
 		{
 			_errorText = event.text;
 			dispatchEvent(event.clone());
+		}
+		
+		private function onShorten_HTTP_STATUS(event:HTTPStatusEvent):void 
+		{
+			//_errorText = event.text;
+			//dispatchEvent(event.clone());
+			trace("onShorten_HTTP_STATUS()");
+			trace(event);
 		}
 		
 		private function onShorten_SECURITY_ERROR(event:SecurityErrorEvent):void 
