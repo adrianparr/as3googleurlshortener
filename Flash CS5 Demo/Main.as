@@ -15,8 +15,7 @@ package
 	public class Main extends Sprite 
 	{
 		// Get your API key from http://code.google.com/apis/console/
-		//private const _apiKey:String = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
-		private const _apiKey:String = "AIzaSyDx5TjJXZ_w3Q1LJ61RfgOV236Iod2aZZ4";
+		private const _apiKey:String = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
 		
 		private var _styleSheet:StyleSheet;
 		
