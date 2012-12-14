@@ -24,7 +24,7 @@ var gus:GoogleUrlShortener = new GoogleUrlShortener();
 gus.addEventListener(Event.COMPLETE, onShortenComplete);
 gus.shorten(longUrl, apiKey);
 function onShortenComplete(event:Event):void {
-    var shortUrl:String = GoogleUrlShortener?(event.target).shortUrl;
+    var shortUrl:String = GoogleUrlShortener(event.target).shortUrl;
     trace(shortUrl);
 }
 
