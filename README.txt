@@ -30,6 +30,12 @@ function onShortenComplete(event:Event):void {
 
 
 
+Demo
+A demo can be viewed on my blog here ...
+http://www.adrianparr.com/?p=158
+
+
+
 Credits / Thanks / Useful URLs
 
 'PHP: Shorten URLs using Google URL shortener API' by Vijay Joshi http://www.vijayjoshi.org/2011/01/12/php-shorten-urls-using-google-url-shortener-api/
